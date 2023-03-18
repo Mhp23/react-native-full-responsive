@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { rh, rs, useRS } from '@mhpdev/react-native-full-responsive';
+import { rh, rs, useRS } from 'react-native-full-responsive';
 
 const SIZE = 20;
 

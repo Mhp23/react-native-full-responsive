@@ -1,5 +1,5 @@
 {
-  "name": "@mhpdev/react-native-full-responsive",
+  "name": "react-native-full-responsive",
   "version": "0.1.0",
   "description": "test",
   "main": "lib/commonjs/index.js",

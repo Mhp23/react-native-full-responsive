@@ -31,15 +31,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   box: {
-    height: SIZE,
-    paddingVertical: SIZE,
+    height: SIZE * 3,
+    marginVertical: SIZE,
     justifyContent: 'center',
     backgroundColor: 'orange',
   },
   responsiveBox: {
     height: rh(SIZE),
     justifyContent: 'center',
-    paddingVertical: rs(SIZE),
+    marginVertical: rs(SIZE),
     backgroundColor: 'yellow',
   },
   textBold: {

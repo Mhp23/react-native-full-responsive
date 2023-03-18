@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@mhpdev/react-native-full-responsive": ["./src/index"]
+      "react-native-full-responsive": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

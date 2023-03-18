@@ -29,7 +29,7 @@ const responsiveHeight = (
   return PixelRatio.roundToNearestPixel((height * heightPercentage) / 100);
 };
 /**
- * the responsive scale value using passed size, recommended to use this for creating reposnive font,
+ * the responsive scale value using passed size, recommended to use this for creating resposnive font,
  * padding and margin and for width use at responsiveWidth (rw) also for height, use at responsiveHeight (rh).
  * @param size
  * @param width

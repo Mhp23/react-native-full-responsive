@@ -12,6 +12,7 @@
 Create your React Native app full responsive.
 
 Using this package you are be able to easily design your layouts, fonts etc responsive for all devices in all supported React Native platforms.
+Also if you like to read [How to make full responsive our React Native applications?](https://medium.com/@hpousty/how-to-make-full-responsive-our-react-native-applications-9adaf26c11b1) article in Medium.
 
 <p align="center">
   <img src="./baner.jpg" />
@@ -56,7 +57,7 @@ Consider the input argument for ***responsiveWidth*** and ***responsiveHeight***
 
 If your device is not just portrait or landscape, you can use the hooks in functional components or if you are using class base components, you are capable of defining ```Dimensions.addEventListener``` in your component and when dimensions change, as second argument pass screen width for responsiveWidth and pass screen height for responsiveHeight, also for responsiveScale you should pass both screen width and height as the second and third arguments to the function.
 
-**Recommended to use *responsiveScale (rs)* for creating resposnive font, padding and margin also for width use at *responsiveWidth (rw)* also for height, use at *responsiveHeight (rh)*.**
+**Recommended to use *responsiveScale (rs)* for creating responsive font, padding and margin also for width use at *responsiveWidth (rw)* also for height, use at *responsiveHeight (rh)*.**
 
 ## Example
 

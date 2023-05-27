@@ -29,6 +29,7 @@ yarn add react-native-full-responsive
 ```
 
 ## Usage
+**Support React Native +62.0**<br/>
 Before showing how you can use it, all methods in the package have two ways to use, first long syntax and second brief syntax, depending on how you like to import and use, you capable of using that.
 
 ```js
@@ -42,6 +43,7 @@ import {
   useResponsiveWidth,
   useResponsiveHeight,
   useResponsiveMethods,
+  withResponsiveMethods,
 } from 'react-native-full-responsive';
 //or briefly
 import {
@@ -53,16 +55,16 @@ import {
   useRW,
   useRH,
   useRM,
+  withRM,
 } from 'react-native-full-responsive';
 ```
 Consider the input argument for ***responsiveWidth*** and ***responsiveHeight*** methods as a percentage (numeric like 5, 10, or whatever you want), also ***responsiveScale*** will return a scaled value depending on the device.
 
 **Recommended to use *responsiveScale (rs)* for creating responsive font, padding and margin, also for width use at *responsiveWidth (rw)* for height, use at *responsiveHeight (rh)*.**
 
-If your device is not just portrait or landscape, you can use the hooks in functional components or if you are using class base components, you are capable of defining ```Dimensions.addEventListener``` in your component and when dimensions change, as a second argument pass screen width for responsiveWidth and pass screen height for responsiveHeight, also for responsiveScale you should pass both screen width and height as the second and third arguments to the function.
+If you want to use **useResponsiveMethods** without additional steps as props use in your class components, just wrap your component in **withResponsiveMethods** or **withRM** HOC. For more info please check out [withResponsiveMethods example](https://github.com/Mhp23/react-native-full-responsive/tree/main/example/src/ClassApp/index.tsx) or you are capable of defining ```Dimensions.addEventListener``` in your component and when dimensions change, as a second argument pass screen width for responsiveWidth and pass screen height for responsiveHeight, also for the responsiveScale you should pass both screen width and height as the second and third arguments to the function.
 
 **useResponsiveMethods**
-
 Sometimes you want to use a responsive scale, responsive width, or height inside your component more than once and you want both sizes for portrait and landscape mode, so this hook will be the solution and it will return to you `rs`, `rw` and `rh` methods:
 
 ```ts
@@ -70,18 +72,21 @@ Sometimes you want to use a responsive scale, responsive width, or height inside
   //...
   const {rs, rw, rh} = useResponsiveMethods();
 ```
+
 ## Example
 
- ```js
+```tsx
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { rh, rs, useRS } from 'react-native-full-responsive';
+import { useRM } from 'react-native-full-responsive';
 
 const SIZE = 20;
 
 export default function App() {
-  const fontSize = useRS(SIZE);
+  const { rh, rs } = useRM();
+
+  const scaledValue = rs(SIZE);
 
   return (
     <View style={styles.container}>
@@ -90,8 +95,16 @@ export default function App() {
           without react-native-full-responsive
         </Text>
       </View>
-      <View style={styles.responsiveBox}>
-        <Text style={[styles.textBold, { fontSize }]}>
+      <View
+        style={[
+          styles.responsiveBox,
+          {
+            height: rh(SIZE),
+            marginVertical: scaledValue,
+          },
+        ]}
+      >
+        <Text style={[styles.textBold, { fontSize: sacledValue }]}>
           with react-native-full-responsive
         </Text>
       </View>
@@ -112,9 +125,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'orange',
   },
   responsiveBox: {
-    height: rh(SIZE),
     justifyContent: 'center',
-    marginVertical: rs(SIZE),
     backgroundColor: 'yellow',
   },
   textBold: {

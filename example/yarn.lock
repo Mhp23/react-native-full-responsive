@@ -8670,6 +8670,11 @@ react-native-codegen@^0.71.5:
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
 
+react-native-full-responsive@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-full-responsive/-/react-native-full-responsive-1.0.3.tgz#14509909017d857d612e22b133993fadf901a122"
+  integrity sha512-rpPyQlJQI2MdclQk33cUYtvCqmThiQaulPZt4rql31t6jsWklNRFnLiRFeHiJmfFR0Wy9iPHhljYuiuSRuBn+Q==
+
 react-native-gradle-plugin@^0.71.15:
   version "0.71.16"
   resolved "https://registry.yarnpkg.com/react-native-gradle-plugin/-/react-native-gradle-plugin-0.71.16.tgz#822bb0c680e03b5df5aa65f2e5ffc2bc2930854a"

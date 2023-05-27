@@ -29,7 +29,7 @@ yarn add react-native-full-responsive
 ```
 
 ## Usage
-**Support React Native +62.0**<br/>
+**Supported for React Native >= 0.60**<br/>
 Before showing how you can use it, all methods in the package have two ways to use, first long syntax and second brief syntax, depending on how you like to import and use, you capable of using that.
 
 ```js

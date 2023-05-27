@@ -1,6 +1,6 @@
 {
   "name": "react-native-full-responsive",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Create your React Native app full responsive",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -40,10 +40,12 @@
     "responsive",
     "responsive-ui",
     "responsive-font",
+    "full-responsive",
     "responsive-scale",
     "responsive-layout",
     "responsive-font-size",
-    "responsive-dimensions"
+    "responsive-dimensions",
+    "react-native-full-responsive"
   ],
   "repository": "https://github.com/Mhp23/react-native-full-responsive",
   "author": "mhp23 <hpousty@gmail.com> (https://github.com/Mhp23)",

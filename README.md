@@ -104,7 +104,7 @@ export default function App() {
           },
         ]}
       >
-        <Text style={[styles.textBold, { fontSize: sacledValue }]}>
+        <Text style={[styles.textBold, { fontSize: scaledValue }]}>
           with react-native-full-responsive
         </Text>
       </View>

@@ -2,24 +2,19 @@ import React from 'react';
 import { rs } from '../layout';
 import { useWindowDimensions } from 'react-native';
 
-const useResponsiveScale = (scaleSize: number): number => {
-  if (!scaleSize) {
+const useResponsiveScale = (size: number): number => {
+  if (!size) {
     throw new Error(
-      'for using useResponsiveScale should pass scaleSize as argument.'
+      'for using useResponsiveScale should pass size as argument.'
     );
   }
   const { width, height } = useWindowDimensions();
 
-  const [fontSize, setFontSize] = React.useState<number>(() =>
-    rs(scaleSize, width, height)
-  );
+  const scaledSize = React.useMemo(() => {
+    return rs(size, width, height);
+  }, [size, height, width]);
 
-  React.useEffect(() => {
-    const newSize = rs(scaleSize, width, height);
-    setFontSize(newSize);
-  }, [width, height, scaleSize]);
-
-  return fontSize;
+  return scaledSize;
 };
 
 export { useResponsiveScale, useResponsiveScale as useRS };

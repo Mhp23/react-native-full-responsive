@@ -10,14 +10,9 @@ const useResponsiveWidth = (widthPercentage: number): number => {
   }
   const { width: screenWidth } = useWindowDimensions();
 
-  const [width, setWidth] = React.useState<number>(() =>
-    rw(widthPercentage, screenWidth)
-  );
-
-  React.useEffect(() => {
-    let newWidth = rw(widthPercentage, screenWidth);
-    setWidth(newWidth);
-  }, [widthPercentage, screenWidth]);
+  const width = React.useMemo(() => {
+    return rw(widthPercentage, screenWidth);
+  }, [screenWidth, widthPercentage]);
 
   return width;
 };

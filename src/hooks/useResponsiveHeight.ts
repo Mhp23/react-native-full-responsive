@@ -10,13 +10,8 @@ const useResponsiveHeight = (heightPercentage: number): number => {
   }
   const { height: screenHeight } = useWindowDimensions();
 
-  const [height, setHeight] = React.useState<number>(() =>
-    rh(heightPercentage, screenHeight)
-  );
-
-  React.useEffect(() => {
-    let newWidth = rh(heightPercentage, screenHeight);
-    setHeight(newWidth);
+  const height = React.useMemo(() => {
+    return rh(heightPercentage, screenHeight);
   }, [heightPercentage, screenHeight]);
 
   return height;

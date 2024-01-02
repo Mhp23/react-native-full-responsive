@@ -1,11 +1,10 @@
 import * as React from 'react';
-
 import { StyleSheet, View, Text } from 'react-native';
-import { useRM } from 'react-native-full-responsive';
+import { useRM, FRProvider } from 'react-native-full-responsive';
 
 const SIZE = 20;
 
-export default function App() {
+const MyComponent = () => {
   const { rh, rs } = useRM();
 
   const scaledValue = rs(SIZE);
@@ -31,6 +30,14 @@ export default function App() {
         </Text>
       </View>
     </View>
+  );
+};
+
+export default function App() {
+  return (
+    <FRProvider type="sm">
+      <MyComponent />
+    </FRProvider>
   );
 }
 

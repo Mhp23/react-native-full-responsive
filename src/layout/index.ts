@@ -1,48 +1,58 @@
 import { PixelRatio } from 'react-native';
 import { getDimensions } from '../utils';
+import { getBaseWidth } from './getBaseWidth';
+import type { ContextProps } from '../types';
 
 const { screenWidth, screenHeight } = getDimensions();
-
-const BASE_WIDTH = 360;
 /**
- * the responsive width size using passed width percentage.
+ * The responsive width size will be calculated using the passed percentage.
  * @param widthPercentage
  * @param width screen width of device
- * @returns {Number}
+ * @returns calculated size, if the passed percentage is not a number, it will default to `0`.
  */
 const responsiveWidth = (
-  widthPercentage: number,
+  widthPercentage: number | undefined,
   width = screenWidth
 ): number => {
+  if (typeof widthPercentage !== 'number') {
+    return 0;
+  }
   return PixelRatio.roundToNearestPixel((width * widthPercentage) / 100);
 };
 /**
- * the responsive height size using passed height percentage.
+ * The responsive height size will be calculated using the passed percentage.
  * @param heightPercentage
  * @param height screen height of device
- * @returns {Number}
+ * @returns calculated size, if the passed percentage is not a number, it will default to `0`.
  */
 const responsiveHeight = (
-  heightPercentage: number,
+  heightPercentage: number | undefined,
   height = screenHeight
 ): number => {
+  if (typeof heightPercentage !== 'number') {
+    return 0;
+  }
   return PixelRatio.roundToNearestPixel((height * heightPercentage) / 100);
 };
 /**
- * the responsive scale value using passed size, recommended to use this for creating resposnive font,
- * padding and margin and for width use at responsiveWidth (rw) also for height, use at responsiveHeight (rh).
+ * The responsive scaled size will be calculated using the passed size.
  * @param size
- * @param width
- * @param height
- * @returns {Number}
+ * @param width screen width of device
+ * @param height screen height of device
+ * @returns scaled size, if the passed size is not a number, it will default to `0`.
  */
 const responsiveScale = (
-  size: number,
+  size: number | undefined,
   width = screenWidth,
-  height = screenHeight
+  height = screenHeight,
+  config?: ContextProps
 ) => {
-  let dimension = width < height ? width : height;
-  return (dimension / BASE_WIDTH) * size;
+  if (typeof size !== 'number') {
+    return 0;
+  }
+  const baseWidth = getBaseWidth(config?.type, config?.bases);
+  const dimension = width < height ? width : height;
+  return (dimension / baseWidth) * size;
 };
 
 export {

@@ -3,20 +3,10 @@ import { rh } from '../layout';
 import { useWindowDimensions } from 'react-native';
 
 const useResponsiveHeight = (heightPercentage: number): number => {
-  if (!heightPercentage) {
-    throw new Error(
-      'for using useResponsiveHeight should pass heightPercentage as argument.'
-    );
-  }
   const { height: screenHeight } = useWindowDimensions();
 
-  const [height, setHeight] = React.useState<number>(() =>
-    rh(heightPercentage, screenHeight)
-  );
-
-  React.useEffect(() => {
-    let newWidth = rh(heightPercentage, screenHeight);
-    setHeight(newWidth);
+  const height = React.useMemo(() => {
+    return rh(heightPercentage, screenHeight);
   }, [heightPercentage, screenHeight]);
 
   return height;

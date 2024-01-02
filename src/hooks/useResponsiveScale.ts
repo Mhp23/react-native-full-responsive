@@ -1,25 +1,18 @@
 import React from 'react';
 import { rs } from '../layout';
+import { useDevice } from './useDevice';
 import { useWindowDimensions } from 'react-native';
 
-const useResponsiveScale = (scaleSize: number): number => {
-  if (!scaleSize) {
-    throw new Error(
-      'for using useResponsiveScale should pass scaleSize as argument.'
-    );
-  }
+const useResponsiveScale = (size: number): number => {
+  const device = useDevice();
+
   const { width, height } = useWindowDimensions();
 
-  const [fontSize, setFontSize] = React.useState<number>(() =>
-    rs(scaleSize, width, height)
-  );
+  const scaledSize = React.useMemo(() => {
+    return rs(size, width, height, device);
+  }, [size, height, width, device]);
 
-  React.useEffect(() => {
-    const newSize = rs(scaleSize, width, height);
-    setFontSize(newSize);
-  }, [width, height, scaleSize]);
-
-  return fontSize;
+  return scaledSize;
 };
 
 export { useResponsiveScale, useResponsiveScale as useRS };

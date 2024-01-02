@@ -1,9 +1,9 @@
 import { PixelRatio } from 'react-native';
 import { getDimensions } from '../utils';
+import { getBaseWidth } from './getBaseWidth';
+import type { ContextProps } from '../types';
 
 const { screenWidth, screenHeight } = getDimensions();
-
-const BASE_WIDTH = 360;
 /**
  * the responsive width size using passed width percentage.
  * @param widthPercentage
@@ -39,10 +39,12 @@ const responsiveHeight = (
 const responsiveScale = (
   size: number,
   width = screenWidth,
-  height = screenHeight
+  height = screenHeight,
+  config?: ContextProps
 ) => {
+  const baseWidth = getBaseWidth(config?.type, config?.bases);
   let dimension = width < height ? width : height;
-  return (dimension / BASE_WIDTH) * size;
+  return (dimension / baseWidth) * size;
 };
 
 export {

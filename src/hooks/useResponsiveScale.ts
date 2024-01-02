@@ -1,14 +1,9 @@
 import React from 'react';
 import { rs } from '../layout';
-import { useWindowDimensions } from 'react-native';
 import { useDevice } from './useDevice';
+import { useWindowDimensions } from 'react-native';
 
 const useResponsiveScale = (size: number): number => {
-  if (!size) {
-    throw new Error(
-      'for using useResponsiveScale should pass size as argument.'
-    );
-  }
   const device = useDevice();
 
   const { width, height } = useWindowDimensions();

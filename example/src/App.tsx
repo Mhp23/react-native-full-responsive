@@ -5,7 +5,7 @@ import { useRM, FRProvider } from 'react-native-full-responsive';
 const SIZE = 20;
 
 const MyComponent = () => {
-  const { rh, rs } = useRM();
+  const { rs } = useRM();
 
   const scaledValue = rs(SIZE);
 
@@ -20,8 +20,9 @@ const MyComponent = () => {
         style={[
           styles.responsiveBox,
           {
-            height: rh(SIZE),
+            height: scaledValue * 3,
             marginVertical: scaledValue,
+            paddingHorizontal: scaledValue / 2,
           },
         ]}
       >
@@ -52,6 +53,7 @@ const styles = StyleSheet.create({
     marginVertical: SIZE,
     justifyContent: 'center',
     backgroundColor: 'orange',
+    paddingHorizontal: SIZE / 2,
   },
   responsiveBox: {
     justifyContent: 'center',

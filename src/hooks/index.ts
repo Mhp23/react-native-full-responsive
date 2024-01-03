@@ -1,4 +1,5 @@
 export * from './useDevice';
+export * from './useMediaQuery';
 export * from './useResponsiveDim';
 export * from './useResponsiveScale';
 export * from './useResponsiveWidth';

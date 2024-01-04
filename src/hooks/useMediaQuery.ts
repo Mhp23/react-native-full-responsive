@@ -3,7 +3,7 @@ import { DefaultThresholds } from '../constants';
 import { useWindowDimensions } from 'react-native';
 import type { DeviceType, MappedDeviceType } from '../types';
 
-export const useMediaQuery = (
+const useMediaQuery = (
   thresholds: Partial<MappedDeviceType> = DefaultThresholds
 ) => {
   const { width, height } = useWindowDimensions();
@@ -36,3 +36,5 @@ export const useMediaQuery = (
 
   return deviceSize;
 };
+
+export { useMediaQuery, useMediaQuery as useMQ };

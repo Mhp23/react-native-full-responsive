@@ -20,4 +20,4 @@ const withMediaQuery = <T extends object>(
   return ComponentWithMethods;
 };
 
-export { withMediaQuery };
+export { withMediaQuery, withMediaQuery as withMQ };

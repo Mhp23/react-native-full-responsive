@@ -1,13 +1,17 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { withRM, ResponsiveMethodsProps } from 'react-native-full-responsive';
+import {
+  withRM,
+  FRProvider,
+  type ResponsiveMethodsProps,
+} from 'react-native-full-responsive';
 
 const SIZE = 20;
 
-class App extends React.Component<ResponsiveMethodsProps> {
+class Component extends React.Component<ResponsiveMethodsProps> {
   render(): React.ReactNode {
-    const { rs, rh } = this.props;
+    const { rs } = this.props;
 
     const scaledValue = rs(SIZE);
 
@@ -22,8 +26,9 @@ class App extends React.Component<ResponsiveMethodsProps> {
           style={[
             styles.responsiveBox,
             {
-              height: rh(SIZE),
+              height: scaledValue * 3,
               marginVertical: scaledValue,
+              paddingHorizontal: scaledValue / 2,
             },
           ]}
         >
@@ -36,7 +41,19 @@ class App extends React.Component<ResponsiveMethodsProps> {
   }
 }
 
-export default withRM(App);
+const MyComponent = withRM(Component);
+
+class App extends React.Component {
+  render(): React.ReactNode {
+    return (
+      <FRProvider type="sm">
+        <MyComponent />
+      </FRProvider>
+    );
+  }
+}
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {

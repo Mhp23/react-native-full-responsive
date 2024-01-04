@@ -5,4 +5,4 @@ export * from './layout';
 export * from './constants';
 export * from './context/FRProvider';
 
-export type { ResponsiveMethodsProps } from './types';
+export type * from './types';

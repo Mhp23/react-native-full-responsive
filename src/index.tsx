@@ -5,4 +5,4 @@ export * from './layout';
 export * from './constants';
 export * from './context/FRProvider';
 
-export type * from './types';
+export * from './types';

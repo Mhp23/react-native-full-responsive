@@ -1,13 +1,13 @@
 # react-native-full-responsive
 
 <p align="center">
-  <img src="./sim-1x.png" alt="iPhone SE (3rd generation)" width="15%" />
-  <img src="./sim-2x.png" alt="iPhone 15 Pro Max" width="15%" />
-  <img src="./sim-3x.png" alt="iPad Pro (12.9-inch)" width="29%" />
+  <img src="./sim-1x.png" alt="iPhone SE (3rd generation)" width="17.5%" />
+  <img src="./sim-2x.png" alt="iPhone 15 Pro Max" width="17.5%" />
+  <img src="./sim-3x.png" alt="iPad Pro (12.9-inch)" width="34%" />
 </p>
 
-<P align="center" style="margin-top: -17.5px">
-  <img src="./sim-4x.png" alt="Web" width="59.75%" />
+<P align="center">
+  <img src="./sim-4x.png" alt="Web" width="70%" />
 </p>
 
 <h3 align="center">

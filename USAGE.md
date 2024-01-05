@@ -287,12 +287,12 @@ A hook is provided to retrieve the `type` of dimension size (`xs` | `sm` | `md` 
 import { FRProvider, useMediaQuery } from 'react-native-full-responsive';
 //...
 
-const customThrsholds = {
+const customThresholds = {
   //...
 }
 
 export default function App() {
-  const type = useMediaQuery(customThrsholds);
+  const type = useMediaQuery(customThresholds);
 
   return (
     <FRProvider type={type}>

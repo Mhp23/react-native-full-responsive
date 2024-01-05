@@ -3,7 +3,7 @@ import { rs } from '../layout';
 import { useDevice } from './useDevice';
 import { useWindowDimensions } from 'react-native';
 
-const useResponsiveScale = (size: number): number => {
+const useResponsiveScale = (size: number | undefined) => {
   const device = useDevice();
 
   const { width, height } = useWindowDimensions();

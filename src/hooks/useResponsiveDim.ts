@@ -2,8 +2,8 @@ import { useResponsiveWidth } from './useResponsiveWidth';
 import { useResponsiveHeight } from './useResponsiveHeight';
 
 const useResponsiveDim = (
-  widthPercentage: number,
-  heightPercentage: number
+  widthPercentage: number | undefined,
+  heightPercentage: number | undefined
 ) => {
   const width = useResponsiveWidth(widthPercentage);
   const height = useResponsiveHeight(heightPercentage);

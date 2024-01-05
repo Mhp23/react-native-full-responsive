@@ -45,7 +45,10 @@
     "responsive-layout",
     "responsive-font-size",
     "responsive-dimensions",
-    "react-native-full-responsive"
+    "react-native-full-responsive",
+    "react native media query",
+    "media query",
+    "responsive size",
   ],
   "repository": "https://github.com/Mhp23/react-native-full-responsive",
   "author": "mhp23 <hpousty@gmail.com> (https://github.com/Mhp23)",

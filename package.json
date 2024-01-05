@@ -1,6 +1,6 @@
 {
   "name": "react-native-full-responsive",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Create a fully responsive React Native app for all supported platforms",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",

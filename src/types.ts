@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import type { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 
 export enum BASE_SIZES {
   xs = 320,
@@ -29,3 +30,19 @@ export interface ResponsiveMethodsProps {
   rw: (widthPercentage: number) => number;
   rh: (heightPercentage: number) => number;
 }
+export type NamedStyles<T> = {
+  [P in keyof T]: ViewStyle | TextStyle | ImageStyle;
+};
+export type Pattern = 'rs' | 'rw' | 'rh' | '%';
+export type ValuePattern = string | number | `${number}${Pattern}`;
+export type CreateStyleConfig = {
+  /**
+   * To use custom dimensions width for the calculation
+   */
+  width: number;
+  /**
+   * To use custom dimensions height for the calculation
+   */
+  height: number;
+  scaleConfig: ContextProps;
+};

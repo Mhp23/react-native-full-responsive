@@ -7,7 +7,7 @@ export const parseValue = (
   value: ValuePattern | undefined,
   styleConfig?: Partial<CreateStyleConfig>
 ) => {
-  if (!value || typeof value === 'number') {
+  if (!value || typeof value !== 'string') {
     return value;
   } else {
     const { width, height, scaleConfig } = styleConfig ?? {};

@@ -7,7 +7,7 @@ export const parseValue = (
   value: ValuePattern | undefined,
   styleConfig?: Partial<CreateStyleConfig>
 ) => {
-  if (!value || typeof value !== 'string') {
+  if (typeof value !== 'string') {
     return value;
   } else {
     const { width, height, scaleConfig } = styleConfig ?? {};
@@ -24,7 +24,7 @@ export const parseValue = (
       const hasWrongPattern = NUMBER_STRING_REGEX.test(value);
       if (hasWrongPattern) {
         console.warn(
-          `Value of "${key}" property is invalid, the property value type should be "number", "string", or follow "number(rs|rw|rh|%)" pattern`
+          `Value of "${key}" property is invalid, the property value type should be "number", "string", or follow "number(rs|rw|rh)" pattern`
         );
       }
     }

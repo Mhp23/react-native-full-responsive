@@ -69,6 +69,7 @@
     "@react-native-community/eslint-config": "^3.0.2",
     "@release-it/conventional-changelog": "^5.0.0",
     "@types/jest": "^28.1.2",
+    "@types/lodash": "^4.14.202",
     "@types/react": "~17.0.21",
     "@types/react-native": "0.70.0",
     "commitlint": "^17.0.2",
@@ -160,5 +161,8 @@
       "module",
       "typescript"
     ]
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }

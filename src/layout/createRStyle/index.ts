@@ -1,3 +1,6 @@
+import { StyleSheet } from 'react-native';
+import { linearMapping } from './mapping/linearMapping';
+import { recursiveMapping } from './mapping/recursiveMapping';
 import type { NamedStyles, CreateStyleConfig } from '../../types';
 /**
  * Creating responsive styles, instead of using `StyleSheet.create({})`, you can use `createRStyle` (create responsive style)
@@ -17,14 +20,17 @@ import type { NamedStyles, CreateStyleConfig } from '../../types';
  *  //...
  * })
  * ```
- * @param _styles
- * @param _styleConfig
+ * @param styles
+ * @param styleConfig
  */
-const createRStyle = <T extends NamedStyles<T> | NamedStyles<unknown>>(
-  _styles: T | NamedStyles<T>,
-  _styleConfig?: Partial<CreateStyleConfig>
+export const createRStyle = <T extends NamedStyles<T> | NamedStyles<any>>(
+  style: T,
+  styleConfig?: Partial<CreateStyleConfig>
 ) => {
-  //
+  const responsivedStyles = (
+    styleConfig?.method === 'recursive'
+      ? recursiveMapping<T>(style, styleConfig)
+      : linearMapping<T>(style, styleConfig)
+  ) as any;
+  return StyleSheet.create(responsivedStyles);
 };
-
-export default { createRStyle };

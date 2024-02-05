@@ -30,12 +30,28 @@ export interface ResponsiveMethodsProps {
   rw: (widthPercentage: number) => number;
   rh: (heightPercentage: number) => number;
 }
-export type NamedStyles<T> = {
-  [P in keyof T]: ViewStyle | TextStyle | ImageStyle;
+export type StyleStack = {
+  style: any;
+  parentPath: unknown;
 };
-export type Pattern = 'rs' | 'rw' | 'rh' | '%';
-export type ValuePattern = string | number | `${number}${Pattern}`;
+export type WithPattern<T> = {
+  [P in keyof T]: number extends T[P] ? ResponsivePattern | T[P] : T[P];
+};
+export type NamedStyles<T> = {
+  [P in keyof T]:
+    | WithPattern<ViewStyle>
+    | WithPattern<TextStyle>
+    | WithPattern<ImageStyle>;
+};
+export type Pattern = 'rs' | 'rw' | 'rh';
+export type ResponsivePattern = `${number}${Pattern}`;
+export type ValuePattern = string | number | ResponsivePattern;
 export type CreateStyleConfig = {
+  /**
+   * To specify how parsing styles, for deep styles better to use linear method
+   * @default linear
+   */
+  method: 'linear' | 'recursive';
   /**
    * To use custom dimensions width for the calculation
    */

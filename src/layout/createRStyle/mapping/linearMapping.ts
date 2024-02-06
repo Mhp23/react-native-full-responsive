@@ -6,9 +6,6 @@ import type {
 } from '../../../types';
 import { parseValue } from '../parseValue';
 
-const isObject = (value: unknown) =>
-  value !== null && typeof value === 'object';
-
 export const linearMapping = <T>(
   style: T,
   styleConfig?: Partial<CreateStyleConfig>
@@ -23,11 +20,10 @@ export const linearMapping = <T>(
           parentPath: `${parentPath}[${i}]`,
         });
       }
-    } else if (isObject(currentStyle)) {
+    } else if (_.isObject(currentStyle)) {
       for (const [property, currentValue] of Object.entries(currentStyle)) {
-        if (!isObject(currentValue)) {
+        if (!_.isObject(currentValue)) {
           const parsedVal = parseValue(
-            property,
             currentValue as ValuePattern,
             styleConfig
           );

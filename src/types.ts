@@ -48,8 +48,10 @@ export type ResponsivePattern = `${number}${Pattern}`;
 export type ValuePattern = string | number | ResponsivePattern;
 export type CreateStyleConfig = {
   /**
-   * To specify how parsing styles, for deep styles better to use linear method
-   * @default linear
+   * To specify the parsing styles method, in this case, the recursive method is faster,
+   * unless for deep and large structure objects, where the linear algorithm may yield better results,
+   * considering both time and space complexity.
+   * @default recursive
    */
   method: 'linear' | 'recursive';
   /**

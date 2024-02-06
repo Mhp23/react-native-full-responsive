@@ -28,9 +28,9 @@ export const createRStyle = <T extends NamedStyles<T> | NamedStyles<any>>(
   styleConfig?: Partial<CreateStyleConfig>
 ) => {
   const responsivedStyles = (
-    styleConfig?.method === 'recursive'
-      ? recursiveMapping<T>(style, styleConfig)
-      : linearMapping<T>(style, styleConfig)
+    styleConfig?.method === 'linear'
+      ? linearMapping<T>(style, styleConfig)
+      : recursiveMapping<T>(style, styleConfig)
   ) as any;
   return StyleSheet.create(responsivedStyles);
 };

@@ -1,12 +1,12 @@
 import { parseValue } from '../parseValue';
-import type { CreateStyleConfig, ValuePattern } from '../../../types';
+import type { ValuePattern, CreateStyleConfig } from '../../../types';
 
 export const recursiveMapping = <T>(
   style: T,
   styleConfig?: Partial<CreateStyleConfig>
-) => {
+): T => {
   const cache = new WeakMap();
-  const mapper = (currentStyle: unknown): unknown => {
+  const mapper = (currentStyle: unknown): any => {
     if (typeof currentStyle !== 'object' || currentStyle === null) {
       return parseValue(currentStyle as ValuePattern, styleConfig);
     }

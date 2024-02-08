@@ -27,10 +27,10 @@ export const createRStyle = <T extends NamedStyles<T> | NamedStyles<any>>(
   style: T,
   styleConfig?: Partial<CreateStyleConfig>
 ) => {
-  const responsivedStyles = (
+  const responsivedStyles =
     styleConfig?.method === 'linear'
-      ? linearMapping<T>(style, styleConfig)
-      : recursiveMapping<T>(style, styleConfig)
-  ) as any;
+      ? linearMapping(style, styleConfig)
+      : recursiveMapping(style, styleConfig);
+  //@ts-ignore
   return StyleSheet.create(responsivedStyles);
 };

@@ -62,5 +62,8 @@ export type CreateStyleConfig = {
    * To use custom dimensions height for the calculation
    */
   height: number;
+  /**
+   * To use a specific responsive scale method config for applying when using `rs` for style properties
+   */
   scaleConfig: ContextProps;
 };

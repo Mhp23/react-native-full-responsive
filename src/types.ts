@@ -65,5 +65,5 @@ export type CreateStyleConfig = {
   /**
    * To use a specific responsive scale method config for applying when using `rs` for style properties
    */
-  scaleConfig: ContextProps;
+  scaleConfig: Partial<ContextProps>;
 };

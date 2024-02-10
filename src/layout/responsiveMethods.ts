@@ -45,7 +45,7 @@ const responsiveScale = (
   size: number | undefined,
   width = screenWidth,
   height = screenHeight,
-  config?: ContextProps
+  config?: Partial<ContextProps>
 ) => {
   if (typeof size !== 'number') {
     return 0;

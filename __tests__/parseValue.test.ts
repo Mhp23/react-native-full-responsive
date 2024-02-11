@@ -20,6 +20,37 @@ describe('parse value tests', () => {
   it('should parse responsive height correctly', () => {
     expect(parseValue('10rh')).toEqual(rh(10));
   });
+  it('should parse values are float or have sign correctly', () => {
+    expect(parseValue('+10rs')).toEqual(rs(10));
+    expect(parseValue('-10rs')).toEqual(rs(-10));
+
+    expect(parseValue('+10rw')).toEqual(rw(10));
+    expect(parseValue('-10rw')).toEqual(rw(-10));
+
+    expect(parseValue('+10rh')).toEqual(rh(10));
+    expect(parseValue('-10rh')).toEqual(rh(-10));
+
+    expect(parseValue('.5rs')).toEqual(rs(0.5));
+    expect(parseValue('-0.5rs')).toEqual(rs(-0.5));
+
+    expect(parseValue('+12.51221rs')).toEqual(rs(12.51221));
+    expect(parseValue('-12.51221rs')).toEqual(rs(-12.51221));
+
+    expect(parseValue('+12.51221rw')).toEqual(rw(12.51221));
+    expect(parseValue('-12.51221rw')).toEqual(rw(-12.51221));
+
+    expect(parseValue('+12.51221rh')).toEqual(rh(12.51221));
+    expect(parseValue('-12.51221rh')).toEqual(rh(-12.51221));
+  });
+  it('should parse responsive scale float value correctly', () => {
+    expect(parseValue('12.51221rs')).toEqual(rs(12.51221));
+  });
+  it('should parse responsive width float value correctly', () => {
+    expect(parseValue('12.5rw')).toEqual(rw(12.5));
+  });
+  it('should parse responsive height float value correctly', () => {
+    expect(parseValue('12.5rh')).toEqual(rh(12.5));
+  });
   it('should not parse wrong responsive scale patterns', () => {
     expect(parseValue('10 rs')).toEqual('10 rs');
     expect(parseValue('10@rs')).toEqual('10@rs');

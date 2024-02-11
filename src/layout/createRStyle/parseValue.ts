@@ -13,23 +13,24 @@ export const parseValue = (
 
     const executed = value.match(PATTERN_REGEX);
 
-    const styleValue = executed?.[1];
+    if (!executed) {
+      return value;
+    }
+    const styleValue = parseFloat(executed[1] as string);
 
-    const suffix = executed?.[2];
+    const suffix = executed[4];
 
     let responsivedValue;
 
-    const toNumValue = Number(styleValue);
-
     switch (suffix) {
       case 'rs':
-        responsivedValue = rs(toNumValue, width, height, scaleConfig);
+        responsivedValue = rs(styleValue, width, height, scaleConfig);
         break;
       case 'rw':
-        responsivedValue = rw(toNumValue, width);
+        responsivedValue = rw(styleValue, width);
         break;
       case 'rh':
-        responsivedValue = rh(toNumValue, height);
+        responsivedValue = rh(styleValue, height);
         break;
       default:
         responsivedValue = value;

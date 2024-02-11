@@ -1,1 +1,1 @@
-export const PATTERN_REGEX = /^(\d+)(rs|rw|rh|%)$/;
+export const PATTERN_REGEX = /^([+-]?\d+(\.\d+)?|(\.\d+))(rs|rw|rh)$/;

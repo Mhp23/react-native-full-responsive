@@ -46,6 +46,7 @@ export type NamedStyles<T> = {
 export type Pattern = 'rs' | 'rw' | 'rh';
 export type ResponsivePattern = `${number}${Pattern}`;
 export type ValuePattern = string | number | ResponsivePattern;
+export type MethodType = 'linear' | 'recursive';
 export type CreateStyleConfig = {
   /**
    * To specify the parsing styles method, in this case, the recursive method is faster,
@@ -53,7 +54,7 @@ export type CreateStyleConfig = {
    * considering both time and space complexity.
    * @default recursive
    */
-  method: 'linear' | 'recursive';
+  method: MethodType;
   /**
    * To use custom dimensions width for the calculation
    */
@@ -66,4 +67,10 @@ export type CreateStyleConfig = {
    * To use a specific responsive scale method config for applying when using `rs` for style properties
    */
   scaleConfig: Partial<ContextProps>;
+};
+
+export type StyleType<T> = {
+  [P in keyof T]: {
+    [S in keyof T[P]]: T[P][S] extends ResponsivePattern ? number : T[P][S];
+  };
 };

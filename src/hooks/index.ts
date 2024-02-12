@@ -1,3 +1,4 @@
+export * from './useRStyle';
 export * from './useDevice';
 export * from './useMediaQuery';
 export * from './useResponsiveDim';

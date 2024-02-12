@@ -50,7 +50,7 @@ import {
 
 ## Full Responsive Provider
 
-To use the `responsiveScale` hooks, first you should use `FRProvider` in the root component.
+To use the `responsiveScale` hook, first you should use `FRProvider` in the root component.
 
 ```tsx
 import { FRProvider } from 'react-native-full-responsive';

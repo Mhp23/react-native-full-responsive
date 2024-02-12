@@ -26,10 +26,11 @@ This package makes it super easy to create apps responsive that work perfectly o
 
 - Easy to use: Effortlessly implement size scaling and responsive design.
 - Cross-platform: Works seamlessly across multiple platforms and devices.
+- [createRStyle](./USAGE.md#createrstyle) method and [useRStyle](./USAGE.md#userstyle) hook as alternatives to using `StyleSheet.create` for create stylesheets.
 - Various responsive hooks provided: Use these hooks based on your specific use cases.
 - Customizable scaling: Define base widths for specific dimension types `(xs, sm, ... 2xl)` for precise control.
 - Responsive percentage-based sizing: Adjust sizing based on width or height by `PixelRatio`.
-- Media query hooks: Detect dimension types by using the [useMediaQuery](./USAGE.md#usemediaquery-usemq) hooks. You can also override default thresholds as needed. These hooks can be used in the provider to automatically detect and respond based on the configurations.
+- Media query hook: Detect dimension types by using the [useMediaQuery](./USAGE.md#usemediaquery-usemq) hook. You can also override default thresholds as needed. This hook can be used in the provider to automatically detect and respond based on the configurations.
 - Various responsive Higher-Order Components (HOCs) provided: Utilize these methods in your class components.
 - Written in TypeScript and fully typed.
 

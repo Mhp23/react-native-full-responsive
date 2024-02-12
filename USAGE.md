@@ -1,6 +1,8 @@
 <h2>📚 React Native Full Responsive Usage Documentation</h2>
 
 - [Full Responsive Provider](#full-responsive-provider)
+- [createRStyle](#createrstyle)
+- [useRStyle](#userstyle)
 - [responsiveScale (rs)](#responsivescale-rs)
 - [responsiveWidth (rw)](#responsivewidth-rw)
 - [responsiveHeight (rh)](#responsiveheight-rh)
@@ -12,7 +14,7 @@
 - [useMediaQuery (useMQ)](#usemediaquery-usemq)
 - [HOC](#hoc)
 
-All methods within this package offer two usage options, a longer syntax for those who prefer explicitness, and an abbreviated version for those who prefer conciseness. Choose the approach that best suits your preferred import and usage style.
+Excpet for `createRStyle` and `useRStyle`, All methods within this package offer two usage options, a longer syntax for those who prefer explicitness, and an abbreviated version for those who prefer conciseness. Choose the approach that best suits your preferred import and usage style.
 
 ```js
 import {
@@ -64,25 +66,28 @@ export default function App() {
   );
 }
 ```
+
 The provider accepts `bases` and `type` props; explanations of each follow.
 
 <h3>type</h3>
 
 Specifies the current device dimension type that size scaling calculations will use, based on specified related bases.
 
-*Possible values*: `xs` | `sm` | `md` | `lg` | `xl` | `2xl`
+_Possible values_: `xs` | `sm` | `md` | `lg` | `xl` | `2xl`
 
-*Default*: `sm`
+_Default_: `sm`
 
-*Determination* (suggestion): 
+_Determination_ (suggestion):
+
 - Can be based on device specification type (e.g., "sm" for smartphones, "md" for tablets).
-- Can be dynamically determined using the [useMediaQuery]('#useMediaQuery-(useMQ)) hook, based on device dimensions.
+- Can be dynamically determined using the [useMediaQuery](<'#useMediaQuery-(useMQ)>) hook, based on device dimensions.
 
 <h3>bases</h3>
 
-*Description*: Specifies or overrides default experimental base sizes to achieve the ideal point for scaling for each dimension type.
+_Description_: Specifies or overrides default experimental base sizes to achieve the ideal point for scaling for each dimension type.
 
-*Default*:
+_Default_:
+
 ```ts
 {
   'xs' = 320,
@@ -94,14 +99,120 @@ Specifies the current device dimension type that size scaling calculations will 
 }
 ```
 
-⚠️ ***Note: While we'll explore the three main methods and their usage below, it's highly recommended to use the provided hooks (and HOCs for class components) for dynamic dimensions and a more streamlined approach.***
+⚠️ **_Note: While we'll explore the three main methods and their usage below, it's highly recommended to use the provided hooks (and HOCs for class components) for dynamic dimensions and a more streamlined approach._**
+
+## createRStyle
+
+This method is similar to `StyleSheet.create` and can be used in the same way. However, the key difference is that it allows you to easily create responsive styles by utilizing the following responsive patterns (inspired by [react-native-size-matters](https://github.com/nirsky/react-native-size-matters)):
+
+`number(rs|rw|rh)`
+
+These patterns accept a number (which can be a signed or unsigned integer or a float number) and a suffix to specify responsive methods.
+
+This method accepts two arguments: the first argument is your style, and the second argument is optional. The second argument allows for more advanced and flexible usage.
+
+```ts
+createRStyle(styles, config);
+```
+
+The config options includes:
+
+<h3>method</h3>
+
+_Possible values_: `recursive` | `linear`
+
+_Default_: `recursive`
+
+To specify the parsing styles method, in this case, the recursive method is faster than linear, unless for deep and large structure objects, where the linear algorithm may yield better results, considering both time and space complexity.
+
+<h3>width</h3>
+
+To use custom dimensions width for the calculation
+
+<h3>height</h3>
+
+To use custom dimensions height for the calculation
+
+<h3>scaleConfig</h3>
+
+To use a specific responsive scale method config for applying when using `rs` for style properties
+
+```ts
+const styles = createRStyle({
+  container: {
+    flex: 1,
+  },
+  box: {
+    width: '20rw',
+    height: '10rh',
+    marginVertical: `5rs`,
+    justifyContent: 'center',
+    backgroundColor: 'yellow',
+    paddingHorizontal: `7.5rs`,
+  },
+  //...
+});
+```
+
+## useRStyle
+
+A hook is provided for [createRStyle](#createrstyle) to create a dynamic responsive scale. This hook generates a new style when there are changes in dimensions, the parsing method, type, or bases. It requires two arguments:
+
+1. The first argument is the style
+2. The second argument is the parsing method which is optional and the default is `recursive`
+
+An example:
+
+```tsx
+import * as React from 'react';
+import { View, Text } from 'react-native';
+import { FRProvider, useRStyle } from 'react-native-full-responsive';
+
+const SIZE = 20;
+
+const ResponsiveBox: React.FC = () => {
+  const styles = useRStyle({
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    box: {
+      height: `${SIZE * 3}rs`,
+      justifyContent: 'center',
+      backgroundColor: 'yellow',
+      marginVertical: `${SIZE}rs`,
+      paddingHorizontal: `${SIZE / 2}rs`,
+    },
+    textBold: {
+      fontWeight: 'bold',
+      fontSize: `${SIZE}rs`,
+    },
+  });
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.box}>
+        <Text style={styles.textBold}>My awesome responsive text!</Text>
+      </View>
+    </View>
+  );
+};
+
+export default function App() {
+  return (
+    <FRProvider type="sm">
+      <ResponsiveBox />
+    </FRProvider>
+  );
+}
+```
 
 ## responsiveScale (rs)
 
 This function scales the passed size based on the user's device dimensions and base width size and returns the scaled value. It accepts the following arguments:
 
 1. Required argument: The size to be scaled.
-   
 2. Optional argument (for event listeners): The screen width.
 
 3. Optional argument (for event listeners): The screen height.
@@ -113,16 +224,12 @@ The second and third arguments are only needed when adding an event listener to 
 In function components, you can use the [useResponsiveScale](#useResponsiveScale) or [useResponsiveMethods](#useResponsiveMethods) hooks for a more streamlined approach. It only requires passing the size to be scaled, eliminating the need for additional steps or arguments.
 
 ```tsx
-  import { rs } from 'react-native-full-responsive';
+import { rs } from 'react-native-full-responsive';
+//...
+const MyComponent = () => {
   //...
-  const MyComponent = () => {
-    //...
-    return (
-      <Text style={{fontSize: rs(16)}}>
-        My Scaled Text!
-      </Text>
-    )
-  }
+  return <Text style={{ fontSize: rs(16) }}>My Scaled Text!</Text>;
+};
 ```
 
 ## responsiveWidth (rw)
@@ -134,18 +241,18 @@ This method calculates a responsive value based on a numeric percentage value, u
 2. Optional argument: A custom screen width for width calculations.
 
 ```tsx
-  import { rw } from 'react-native-full-responsive';
+import { rw } from 'react-native-full-responsive';
+//...
+const MyComponent = () => {
   //...
-  const MyComponent = () => {
-    //...
-    return (
-      <View style={{width: rw(5)}}>
-        {
-          //...
-        }
-      </View>
-    )
-  }
+  return (
+    <View style={{ width: rw(5) }}>
+      {
+        //...
+      }
+    </View>
+  );
+};
 ```
 
 ## responsiveHeight (rh)
@@ -157,18 +264,18 @@ This method calculates a responsive value based on a numeric percentage value, u
 2. Optional argument: A custom screen height for height calculations.
 
 ```tsx
-  import { rh } from 'react-native-full-responsive';
+import { rh } from 'react-native-full-responsive';
+//...
+const MyComponent = () => {
   //...
-  const MyComponent = () => {
-    //...
-    return (
-      <View style={{height: rh(10)}}>
-        {
-          //...
-        }
-      </View>
-    )
-  }
+  return (
+    <View style={{ height: rh(10) }}>
+      {
+        //...
+      }
+    </View>
+  );
+};
 ```
 
 ## useResponsiveMethods (useRM)
@@ -176,17 +283,13 @@ This method calculates a responsive value based on a numeric percentage value, u
 This hook provides `rs`, `rw`, and `rh` methods, which simplify usage by only requiring the needed size to be passed. It automatically detects dimension changes, including landscape/portrait mode switches and `type` updates for scaling sizes on the provider, ensuring responsiveness without manual intervention.
 
 ```tsx
-  import { useResponsiveMethods } from 'react-native-full-responsive';
+import { useResponsiveMethods } from 'react-native-full-responsive';
+//...
+const MyComponent = () => {
+  const { rs, rw, rh } = useResponsiveMethods(); //or useRM
   //...
-  const MyComponent = () => {
-    const {rs, rw, rh} = useResponsiveMethods(); //or useRM
-    //...
-    return (
-      <Text style={{fontSize: rs(16)}}>
-        My Scaled Text!
-      </Text>
-    )
-  }
+  return <Text style={{ fontSize: rs(16) }}>My Scaled Text!</Text>;
+};
 ```
 
 ## useResponsiveScale (useRS)
@@ -194,17 +297,13 @@ This hook provides `rs`, `rw`, and `rh` methods, which simplify usage by only re
 A hook is provided for [responsiveScale](#responsivescale-rs), which only requires passing a size for scaling.
 
 ```tsx
-  import { useResponsiveScale } from 'react-native-full-responsive';
+import { useResponsiveScale } from 'react-native-full-responsive';
+//...
+const MyComponent = () => {
+  const fontSize = useResponsiveScale(16);
   //...
-  const MyComponent = () => {
-    const fontSize = useResponsiveScale(16)
-    //...
-    return (
-      <Text style={{fontSize}}>
-        My Scaled Text!
-      </Text>
-    )
-  }
+  return <Text style={{ fontSize }}>My Scaled Text!</Text>;
+};
 ```
 
 ## useResponsiveWidth (useRW)
@@ -212,19 +311,19 @@ A hook is provided for [responsiveScale](#responsivescale-rs), which only requir
 A hook is provided for [responsiveWidth](#responsivewidth-rw), which only requires passing a percentage size.
 
 ```tsx
-  import { useResponsiveWidth } from 'react-native-full-responsive';
+import { useResponsiveWidth } from 'react-native-full-responsive';
+//...
+const MyComponent = () => {
+  const width = useResponsiveWidth(5);
   //...
-  const MyComponent = () => {
-    const width = useResponsiveWidth(5)
-    //...
-    return (
-      <View style={{width}}>
-        {
-          //...
-        }
-      </View>
-    )
-  }
+  return (
+    <View style={{ width }}>
+      {
+        //...
+      }
+    </View>
+  );
+};
 ```
 
 ## useResponsiveHeight (useRH)
@@ -232,19 +331,19 @@ A hook is provided for [responsiveWidth](#responsivewidth-rw), which only requir
 A hook is provided for [responsiveHeight](#responsivewheight-rh), which only requires passing a percentage size.
 
 ```tsx
-  import { useResponsiveHeight } from 'react-native-full-responsive';
+import { useResponsiveHeight } from 'react-native-full-responsive';
+//...
+const MyComponent = () => {
+  const height = useResponsiveHeight(10);
   //...
-  const MyComponent = () => {
-    const height = useResponsiveHeight(10)
-    //...
-    return (
-      <View style={{height}}>
-        {
-          //...
-        }
-      </View>
-    )
-  }
+  return (
+    <View style={{ height }}>
+      {
+        //...
+      }
+    </View>
+  );
+};
 ```
 
 ## useResponsiveDim (useRD)
@@ -252,26 +351,27 @@ A hook is provided for [responsiveHeight](#responsivewheight-rh), which only req
 A hook is provided responsive width and height together and could to use it like below:
 
 ```tsx
-  import { useResponsiveDim } from 'react-native-full-responsive';
+import { useResponsiveDim } from 'react-native-full-responsive';
+//...
+const MyComponent = () => {
+  const { width, height } = useResponsiveDim(10);
   //...
-  const MyComponent = () => {
-    const { width, height } = useResponsiveDim(10)
-    //...
-    return (
-      <View style={{width, height}}>
-        {
-          //...
-        }
-      </View>
-    )
-  }
+  return (
+    <View style={{ width, height }}>
+      {
+        //...
+      }
+    </View>
+  );
+};
 ```
 
 ## useMediaQuery (useMQ)
 
 A hook is provided to retrieve the `type` of dimension size (`xs` | `sm` | `md` | `lg` | `xl` | `2xl`) based on specified thresholds. These thresholds can be overridden either entirely or selectively for specific dimensions. This hook offers benefits for use within the provider or when actions need to be performed based on type specifications.
 
-*Default*:
+_Default_:
+
 ```ts
 {
   'xs': 320,
@@ -289,7 +389,7 @@ import { FRProvider, useMediaQuery } from 'react-native-full-responsive';
 
 const customThresholds = {
   //...
-}
+};
 
 export default function App() {
   const type = useMediaQuery(customThresholds);

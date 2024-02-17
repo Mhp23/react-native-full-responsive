@@ -20,9 +20,9 @@ export const linearMapping = <T>(
           parentPath: `${parentPath}[${i}]`,
         });
       }
-    } else if (_.isObject(currentStyle)) {
+    } else if (typeof currentStyle === 'object' && currentStyle !== null) {
       for (const [property, currentValue] of Object.entries(currentStyle)) {
-        if (!_.isObject(currentValue)) {
+        if (typeof currentValue !== 'object' || currentValue === null) {
           const parsedVal = parseValue(
             currentValue as ValuePattern,
             styleConfig

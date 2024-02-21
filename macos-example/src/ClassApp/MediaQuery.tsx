@@ -4,13 +4,13 @@ import {
   withMediaQuery,
   type DeviceType,
 } from 'react-native-full-responsive';
-import {StyleSheet, View, Text} from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 class Component extends React.Component<{
   type: DeviceType;
 }> {
   render(): React.ReactNode {
-    const {type} = this.props;
+    const { type } = this.props;
     return (
       <View style={styles.container}>
         <Text style={styles.textBold}>Dimensions type is: "{type}"</Text>

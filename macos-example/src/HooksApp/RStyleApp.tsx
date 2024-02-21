@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
-import {FRProvider, useRStyle} from 'react-native-full-responsive';
+import { StyleSheet, View, Text } from 'react-native';
+import { FRProvider, useRStyle } from 'react-native-full-responsive';
 
 const SIZE = 20;
 

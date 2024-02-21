@@ -1,18 +1,18 @@
 import * as React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
-import {useRM, FRProvider} from 'react-native-full-responsive';
+import { StyleSheet, View, Text } from 'react-native';
+import { useRM, FRProvider } from 'react-native-full-responsive';
 
 const SIZE = 20;
 
 const MyComponent: React.FC = () => {
-  const {rs} = useRM();
+  const { rs } = useRM();
 
   const scaledValue = rs(SIZE);
 
   return (
     <View style={styles.container}>
       <View style={styles.box}>
-        <Text style={[styles.textBold, {fontSize: SIZE}]}>
+        <Text style={[styles.textBold, { fontSize: SIZE }]}>
           without react-native-full-responsive
         </Text>
       </View>
@@ -24,8 +24,9 @@ const MyComponent: React.FC = () => {
             marginVertical: scaledValue,
             paddingHorizontal: scaledValue / 2,
           },
-        ]}>
-        <Text style={[styles.textBold, {fontSize: scaledValue}]}>
+        ]}
+      >
+        <Text style={[styles.textBold, { fontSize: scaledValue }]}>
           with react-native-full-responsive
         </Text>
       </View>

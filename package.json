@@ -18,6 +18,7 @@
     "cpp",
     "*.podspec",
     "!lib/typescript/example",
+    "!lib/typescript/macos-example",
     "!ios/build",
     "!android/build",
     "!android/gradle",
@@ -33,7 +34,8 @@
     "prepack": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
-    "bootstrap": "yarn example && yarn install",
+    "macos-example": "yarn --cwd macos-example",
+    "bootstrap": "yarn example && yarn macos-example && yarn install",
     "prepare": "husky",
     "pre-commit": "lint-staged"
   },
@@ -105,6 +107,7 @@
     "preset": "react-native",
     "modulePathIgnorePatterns": [
       "<rootDir>/example/node_modules",
+      "<rootDir>/macos-example/node_modules",
       "<rootDir>/lib/"
     ]
   },

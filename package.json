@@ -19,7 +19,7 @@
     "*.podspec",
     "!lib/typescript/example",
     "!lib/typescript/macos-example",
-    "!lib/typescript/tvos-example",
+    "!lib/typescript/tv-example",
     "!ios/build",
     "!android/build",
     "!android/gradle",
@@ -36,8 +36,8 @@
     "release": "release-it",
     "example": "yarn --cwd example",
     "macos-example": "yarn --cwd macos-example",
-    "tvos-example": "yarn --cwd tvos-example",
-    "bootstrap": "yarn example && yarn macos-example && yarn tvos-example && yarn install",
+    "tv-example": "yarn --cwd tv-example",
+    "bootstrap": "yarn example && yarn macos-example && yarn tv-example && yarn install",
     "prepare": "husky",
     "pre-commit": "lint-staged"
   },
@@ -110,7 +110,7 @@
     "modulePathIgnorePatterns": [
       "<rootDir>/example/node_modules",
       "<rootDir>/macos-example/node_modules",
-      "<rootDir>/tvos-example/node_modules",
+      "<rootDir>/tv-example/node_modules",
       "<rootDir>/lib/"
     ]
   },

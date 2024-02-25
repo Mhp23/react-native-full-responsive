@@ -16,6 +16,9 @@ export const parseValue = (
     if (!executed) {
       return value;
     }
+    if (executed[1] === 'undefined') {
+      return undefined;
+    }
     const styleValue = parseFloat(executed[1] as string);
 
     const suffix = executed[4];

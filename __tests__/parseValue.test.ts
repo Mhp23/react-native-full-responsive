@@ -20,6 +20,15 @@ describe('parse value tests', () => {
   it('should parse responsive height correctly', () => {
     expect(parseValue('10rh')).toEqual(rh(10));
   });
+  it('should parse responsive scale with undefined in the pattern correctly', () => {
+    expect(parseValue(`${undefined}rs`)).toBe(undefined);
+  });
+  it('should parse responsive width with undefined in the pattern correctly', () => {
+    expect(parseValue(`${undefined}rw`)).toBe(undefined);
+  });
+  it('should parse responsive height with undefined in the pattern correctly', () => {
+    expect(parseValue(`${undefined}rh`)).toBe(undefined);
+  });
   it('should parse values are float or have sign correctly', () => {
     expect(parseValue('+10rs')).toEqual(rs(10));
     expect(parseValue('-10rs')).toEqual(rs(-10));

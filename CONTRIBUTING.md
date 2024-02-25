@@ -40,6 +40,18 @@ To run the example app on Web:
 yarn example web
 ```
 
+To run the example app on MacOS:
+
+```sh
+yarn macos-example macos
+```
+
+To run the example app on MacOS:
+
+```sh
+yarn tv-example tvos
+```
+
 Make sure your code passes TypeScript and ESLint. Run the following to verify:
 
 ```sh
@@ -58,7 +70,6 @@ Remember to add tests for your change if possible. Run the unit tests by:
 ```sh
 yarn test
 ```
-
 
 ### Commit message convention
 
@@ -102,6 +113,8 @@ The `package.json` file contains various scripts for common tasks:
 - `yarn example start`: start the Metro server for the example app.
 - `yarn example android`: run the example app on Android.
 - `yarn example ios`: run the example app on iOS.
+- `yarn macos-example macos`: run the example app on MacOS.
+- `yarn tv-example tvos`: run the example app on TvOS.
 
 ### Sending a pull request
 

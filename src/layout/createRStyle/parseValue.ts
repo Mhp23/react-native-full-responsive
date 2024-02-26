@@ -1,4 +1,4 @@
-import { rs, rh, rw } from '..';
+import { rs, rh, rw } from '../responsiveMethods';
 import { PATTERN_REGEX } from '../../utils/constants';
 import type { ValuePattern, CreateStyleConfig } from '../../types';
 

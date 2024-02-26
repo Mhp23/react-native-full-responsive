@@ -17,6 +17,41 @@ describe('linear and recursive mapping tests', () => {
     expect(recursiveMapping('style')).toEqual('style');
   });
 
+  it('should map empty object and nested objects correctly', () => {
+    expect(linearMapping({})).toEqual({});
+    expect(
+      linearMapping({
+        container: {},
+        text: {},
+        box: {
+          transoform: [],
+        },
+      })
+    ).toEqual({
+      container: {},
+      text: {},
+      box: {
+        transoform: [],
+      },
+    });
+    expect(recursiveMapping({})).toEqual({});
+    expect(
+      recursiveMapping({
+        container: {},
+        text: {},
+        box: {
+          transoform: [],
+        },
+      })
+    ).toEqual({
+      container: {},
+      text: {},
+      box: {
+        transoform: [],
+      },
+    });
+  });
+
   it('should map an object correctly', () => {
     const input = {
       container: {

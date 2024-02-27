@@ -56,7 +56,9 @@
     "media query",
     "responsive size",
     "responsiveness",
-    "responsiveness react native"
+    "responsiveness react native",
+    "useStyle",
+    "react native useStyle"
   ],
   "repository": "https://github.com/Mhp23/react-native-full-responsive",
   "author": "mhp23 <hpousty@gmail.com> (https://github.com/Mhp23)",

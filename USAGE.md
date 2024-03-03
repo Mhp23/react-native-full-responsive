@@ -158,7 +158,7 @@ const styles = createRStyle({
 
 A hook is provided for [createRStyle](#createrstyle) to create a dynamic responsive scale. This hook generates a new style when there are changes in dimensions, the parsing method, type, or bases. It accepts tree arguments:
 
-1. The first argument is the style and is required (as an object or a callback function)
+1. The first argument is the style and is required (as an object or a function)
 2. The second argument is the dependency list to regenerate styles after changing them, and default is an empty array
 3. The third argument is the parsing method which is optional and the default is `recursive`
 

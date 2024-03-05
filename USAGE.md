@@ -213,6 +213,20 @@ export default function App() {
 }
 ```
 
+I highly recommend that if you're using `ESLint`, for better debugging and to reduce re-render mistakes due to missing dependencies in your custom hooks and specifically in the `useRStyle` hook, you use the [eslint-plugin-react-hooks](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks) plugin. Follow its instructions, and add useRStyle to your ESLint rules like this:
+
+```js
+{
+  //...
+  "rules": {
+    // ...
+    "react-hooks/exhaustive-deps": ["warn", {
+      "additionalHooks": "(useRStyle)"
+    }]
+  }
+}
+```
+
 ## responsiveScale (rs)
 
 This function scales the passed size based on the user's device dimensions and base width size and returns the scaled value. It accepts the following arguments:

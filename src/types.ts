@@ -44,8 +44,7 @@ export type NamedStyles<T> = {
     | WithPattern<ImageStyle>;
 };
 export type Pattern = 'rs' | 'rw' | 'rh';
-export type ResponsivePattern<T extends number | undefined = any> =
-  `${T}${Pattern}`;
+export type ResponsivePattern = `${number}${Pattern}`;
 export type ValuePattern = string | number | ResponsivePattern;
 export type MethodType = 'linear' | 'recursive';
 export type CreateStyleConfig = {

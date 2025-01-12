@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { linearMapping } from './mapping/linearMapping';
 import { recursiveMapping } from './mapping/recursiveMapping';
 import type { StyleType, NamedStyles, CreateStyleConfig } from '../../types';
 /**
@@ -27,10 +26,9 @@ export const createRStyle = <T extends NamedStyles<T> | NamedStyles<any>>(
   style: T,
   styleConfig?: Partial<CreateStyleConfig>
 ): StyleType<T> => {
-  const responsivedStyles =
-    styleConfig?.method === 'linear'
-      ? linearMapping(style, styleConfig)
-      : recursiveMapping(style, styleConfig);
-  //@ts-ignore
-  return StyleSheet.create(responsivedStyles);
+  const responsivedStyles = recursiveMapping(
+    style,
+    styleConfig
+  ) as StyleSheet.NamedStyles<any>;
+  return StyleSheet.create(responsivedStyles) as StyleType<T>;
 };

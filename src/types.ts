@@ -46,15 +46,7 @@ export type NamedStyles<T> = {
 export type Pattern = 'rs' | 'rw' | 'rh';
 export type ResponsivePattern = `${number}${Pattern}`;
 export type ValuePattern = string | number | ResponsivePattern;
-export type MethodType = 'linear' | 'recursive';
 export type CreateStyleConfig = {
-  /**
-   * To specify the parsing styles method, in this case, the recursive method is generally faster than the linear
-   * method (although the algorithm is not strictly linear, it has the potential for linear time complexity and
-   * is called linear). However, for deep and large structured objects, the linear algorithm may be more appropriate.
-   * @default recursive
-   */
-  method: MethodType;
   /**
    * To use custom dimensions width for the calculation
    */

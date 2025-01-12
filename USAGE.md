@@ -117,14 +117,6 @@ createRStyle(styles, config);
 
 The config options includes:
 
-<h3>method</h3>
-
-_Possible values_: `recursive` | `linear`
-
-_Default_: `recursive`
-
-To specify the parsing styles method, in this case, the recursive method is generally faster than the linear method (although the algorithm is not strictly linear, it has the potential for linear time complexity and is called linear). However, for deep and large structured objects, the linear algorithm may be more appropriate.
-
 <h3>width</h3>
 
 To use custom dimensions width for the calculation
@@ -156,11 +148,10 @@ const styles = createRStyle({
 
 ## useRStyle
 
-A hook is provided for [createRStyle](#createrstyle) to create a dynamic responsive scale. This hook generates a new style when there are changes in dimensions, the parsing method, type, or bases. It accepts tree arguments:
+A hook is provided for [createRStyle](#createrstyle) to create a dynamic responsive scale. This hook generates a new style when there are changes in dimensions, the parsing method, type, or bases. It accepts two arguments:
 
 1. The first argument is the style and is required (as an object or a function)
 2. The second argument is the dependency list to regenerate styles after changing them, and default is an empty array
-3. The third argument is the parsing method which is optional and the default is `recursive`
 
 An example:
 
@@ -191,8 +182,7 @@ const ResponsiveBox: React.FC = () => {
         fontSize: `${SIZE}rs`,
       },
     },
-    [],
-    'recursive'
+    []
   );
 
   return (

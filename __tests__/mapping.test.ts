@@ -1,15 +1,8 @@
 import { rh, rs, rw } from '../src';
-import { linearMapping } from '../src/layout/createRStyle/mapping/linearMapping';
 import { recursiveMapping } from '../src/layout/createRStyle/mapping/recursiveMapping';
 
-describe('linear and recursive mapping tests', () => {
+describe('recursive mapping tests', () => {
   it("should returns input value if it isn't an object or array", () => {
-    expect(linearMapping(undefined)).toEqual(undefined);
-    expect(linearMapping(null)).toEqual(null);
-    expect(linearMapping(123)).toEqual(123);
-    expect(linearMapping(true)).toEqual(true);
-    expect(linearMapping('style')).toEqual('style');
-    //Recursive Mapping
     expect(recursiveMapping(undefined)).toEqual(undefined);
     expect(recursiveMapping(null)).toEqual(null);
     expect(recursiveMapping(123)).toEqual(123);
@@ -18,22 +11,6 @@ describe('linear and recursive mapping tests', () => {
   });
 
   it('should map empty object and nested objects correctly', () => {
-    expect(linearMapping({})).toEqual({});
-    expect(
-      linearMapping({
-        container: {},
-        text: {},
-        box: {
-          transoform: [],
-        },
-      })
-    ).toEqual({
-      container: {},
-      text: {},
-      box: {
-        transoform: [],
-      },
-    });
     expect(recursiveMapping({})).toEqual({});
     expect(
       recursiveMapping({
@@ -73,8 +50,6 @@ describe('linear and recursive mapping tests', () => {
         height: rh(10),
       },
     };
-    expect(linearMapping(input)).toEqual(expectedResult);
-    //Recursive Mapping
     expect(recursiveMapping(input)).toEqual(expectedResult);
   });
 
@@ -84,8 +59,6 @@ describe('linear and recursive mapping tests', () => {
       { box: { width: rs(10) } },
       { box2: { width: rs(12.5) } },
     ];
-    expect(linearMapping(input)).toEqual(expectedResult);
-    //Recursive Mapping
     expect(recursiveMapping(input)).toEqual(expectedResult);
   });
 
@@ -136,8 +109,6 @@ describe('linear and recursive mapping tests', () => {
         },
       },
     };
-    expect(linearMapping(input)).toEqual(expectedResult);
-    //Recursive Mapping
     expect(recursiveMapping(input)).toEqual(expectedResult);
   });
 });

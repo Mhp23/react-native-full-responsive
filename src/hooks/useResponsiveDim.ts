@@ -1,9 +1,10 @@
+import { type MaybeNumber } from 'src/types';
 import { useResponsiveWidth } from './useResponsiveWidth';
 import { useResponsiveHeight } from './useResponsiveHeight';
 
 const useResponsiveDim = (
-  widthPercentage: number | undefined,
-  heightPercentage: number | undefined
+  widthPercentage: MaybeNumber,
+  heightPercentage: MaybeNumber
 ) => {
   const width = useResponsiveWidth(widthPercentage);
   const height = useResponsiveHeight(heightPercentage);

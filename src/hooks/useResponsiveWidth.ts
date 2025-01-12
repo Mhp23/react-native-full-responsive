@@ -1,11 +1,12 @@
-import React from 'react';
+import { useMemo } from 'react';
 import { rw } from '../layout';
+import { MaybeNumber } from 'src/types';
 import { useWindowDimensions } from 'react-native';
 
-const useResponsiveWidth = (widthPercentage: number | undefined) => {
+const useResponsiveWidth = (widthPercentage: MaybeNumber) => {
   const { width: screenWidth } = useWindowDimensions();
 
-  const width = React.useMemo(() => {
+  const width = useMemo(() => {
     return rw(widthPercentage, screenWidth);
   }, [screenWidth, widthPercentage]);
 

@@ -9,6 +9,7 @@ export enum BASE_SIZES {
   xl = 740,
   '2xl' = 920,
 }
+export type MaybeNumber = number | undefined;
 export type PropsWithChildren<P> = P & { children?: ReactNode | undefined };
 export type DeviceType = Uncapitalize<keyof typeof BASE_SIZES>;
 export type MappedDeviceType = {

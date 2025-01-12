@@ -1,11 +1,12 @@
-import React from 'react';
+import { useMemo } from 'react';
 import { rh } from '../layout';
+import { type MaybeNumber } from 'src/types';
 import { useWindowDimensions } from 'react-native';
 
-const useResponsiveHeight = (heightPercentage: number | undefined) => {
+const useResponsiveHeight = (heightPercentage: MaybeNumber) => {
   const { height: screenHeight } = useWindowDimensions();
 
-  const height = React.useMemo(() => {
+  const height = useMemo(() => {
     return rh(heightPercentage, screenHeight);
   }, [heightPercentage, screenHeight]);
 

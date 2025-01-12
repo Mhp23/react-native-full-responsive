@@ -10,34 +10,24 @@ export const parseValue = (
     return value;
   } else {
     const { width, height, scaleConfig } = styleConfig ?? {};
-
     const executed = value.match(PATTERN_REGEX);
-
     if (!executed) {
       return value;
     }
     if (executed[1] === 'undefined') {
       return undefined;
     }
-    const styleValue = parseFloat(executed[1] as string);
-
+    const styleValue = parseFloat(executed[1]!);
     const suffix = executed[4];
-
-    let responsivedValue;
-
     switch (suffix) {
       case 'rs':
-        responsivedValue = rs(styleValue, width, height, scaleConfig);
-        break;
+        return rs(styleValue, width, height, scaleConfig);
       case 'rw':
-        responsivedValue = rw(styleValue, width);
-        break;
+        return rw(styleValue, width);
       case 'rh':
-        responsivedValue = rh(styleValue, height);
-        break;
+        return rh(styleValue, height);
       default:
-        responsivedValue = value;
+        return value;
     }
-    return responsivedValue;
   }
 };

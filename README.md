@@ -165,6 +165,8 @@ export default function App() {
 
 To become more familiar with how to use methods within your function or class components, check out the provided [examples](./example/src/).
 
+Also, if you're looking to become more familiar with how to use the package as a universal responsive utility, check out [Todo App](https://github.com/Mhp23/todo-app-client) project for a practical example
+
 ## 📚 Documentation
 
 Explore the [usage documentation](./USAGE.md) to discover how to leverage the methods, hooks, and other features.

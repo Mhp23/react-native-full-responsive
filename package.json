@@ -10,6 +10,7 @@
   "files": [
     "src",
     "lib",
+    "jest",
     "!**/__tests__",
     "!**/__fixtures__",
     "!**/__mocks__",

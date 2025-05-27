@@ -33,7 +33,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepack": "bob build",
-    "release": "release-it",
+    "release": "release-it --only-version",
     "example": "yarn --cwd example",
     "macos-example": "yarn --cwd macos-example",
     "tv-example": "yarn --cwd tv-example",
@@ -75,7 +75,7 @@
     "@commitlint/config-conventional": "18.4.4",
     "@evilmartians/lefthook": "^1.2.2",
     "@react-native-community/eslint-config": "^3.0.2",
-    "@release-it/conventional-changelog": "^5.0.0",
+    "@release-it/conventional-changelog": "^9.0.2",
     "@types/jest": "^28.1.2",
     "@types/react": "~17.0.21",
     "@types/react-native": "0.70.0",
@@ -92,7 +92,7 @@
     "react": "18.2.0",
     "react-native": "0.73.4",
     "react-native-builder-bob": "^0.20.4",
-    "release-it": "^15.0.0",
+    "release-it": "^17.10.0",
     "typescript": "^4.5.2"
   },
   "resolutions": {
@@ -128,7 +128,9 @@
     },
     "plugins": {
       "@release-it/conventional-changelog": {
-        "preset": "angular"
+        "preset": {
+          "name": "angular"
+        }
       }
     }
   },

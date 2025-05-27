@@ -184,9 +184,7 @@ To mock the package’s methods and components using the default mock configurat
 - Copy the following code into that file:
 
   ```ts
-  jest.mock('react-native-full-responsive', () =>
-    require('react-native-full-responsive/jest')
-  );
+  export * from 'react-native-full-responsive/jest';
   ```
 
 ## 🛡️ License

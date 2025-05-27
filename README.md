@@ -175,6 +175,25 @@ Explore the [usage documentation](./USAGE.md) to discover how to leverage the me
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
+## 🧪 Test
+
+To mock the package’s methods and components using the default mock configuration provided, follow these steps:
+
+- Create a file named `react-native-full-responsive.ts` inside your `__mocks__` directory.
+
+- Copy one of the following codes into that file:
+
+  ```ts
+  export * from 'react-native-full-responsive/jest';
+  ```
+
+  Or
+
+  ```ts
+  import mockFullResponsive from 'react-native-full-responsive/jest';
+  jest.mock('react-native-full-responsive', () => mockFullResponsive);
+  ```
+
 ## 🛡️ License
 
 MIT

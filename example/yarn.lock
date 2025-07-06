@@ -7082,10 +7082,9 @@ react-is@^17.0.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-native-full-responsive@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/react-native-full-responsive/-/react-native-full-responsive-1.0.3.tgz"
-  integrity sha512-rpPyQlJQI2MdclQk33cUYtvCqmThiQaulPZt4rql31t6jsWklNRFnLiRFeHiJmfFR0Wy9iPHhljYuiuSRuBn+Q==
+"react-native-full-responsive@link:..":
+  version "0.0.0"
+  uid ""
 
 react-native-web@~0.19.6:
   version "0.19.10"

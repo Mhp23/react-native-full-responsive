@@ -1,13 +1,7 @@
-# react-native-full-responsive
-
 <p align="center">
-  <img src="./sim-1x.png" alt="iPhone SE (3rd generation)" width="17.5%" />
-  <img src="./sim-2x.png" alt="iPhone 15 Pro Max" width="17.5%" />
-  <img src="./sim-3x.png" alt="iPad Pro (12.9-inch)" width="34%" />
-</p>
-
-<P align="center">
-  <img src="./sim-4x.png" alt="Web" width="70%" />
+  <a href="https://mhpdev.com" target="_blank">
+    <img src="./banner.png" alt="React Native Full Responsive Banner" style="max-width:100%;height:auto;" />
+  </a>
 </p>
 
 <h3 align="center">
@@ -21,6 +15,37 @@
 ## 📢 Introduction
 
 This package makes it super easy to create apps responsive that work perfectly on all different screen sizes in React Native (like font size, width, height, and more), making sure everything looks great on any device, from extra small to extra large. You can also tweak how things scale and adjust settings to make everything just the way you want it.
+
+<table width="100%">
+  <tr>
+    <td align="center"  width="24%">
+      <a href="./sim-2x.png" target="_blank">
+        <img src="./sim-2x.png" alt="iPhone 15 Pro Max" width="90%" />
+      </a>
+    </td>
+    <td align="center" width="24%">
+      <a href="./sim-1x.png" target="_blank">
+        <img src="./sim-1x.png" alt="iPhone SE (3rd generation)" width="90%" />
+      </a>
+    </td>
+    <td align="center" width="24%">
+      <a href="./sim-3x.png" target="_blank">
+        <img src="./sim-3x.png" alt="iPad Pro (12.9-inch)" width="90%" />
+      </a>
+    </td>
+    <td align="center" width="24%">
+      <a href="./sim-4x.png" target="_blank">
+        <img src="./sim-4x.png" alt="Web" width="90%" />
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><sub>iPhone 15 Pro Max</sub></td>
+    <td align="center"><sub>iPhone SE (3rd gen)</sub></td>
+    <td align="center"><sub>iPad Pro (12.9-inch)</sub></td>
+    <td align="center"><sub>Web</sub></td>
+  </tr>
+</table>
 
 ## 💫 Features
 
@@ -177,7 +202,7 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 
 ## 🧪 Test
 
-To mock the package’s methods and components using the default mock configuration provided, follow these steps:
+To mock the package's methods and components using the default mock configuration provided, follow these steps:
 
 - Create a file named `react-native-full-responsive.ts` inside your `__mocks__` directory.
 
